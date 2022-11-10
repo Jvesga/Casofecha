@@ -29,4 +29,9 @@ public class Fecha
     public String toString() {
         return dia + "/" + mes + "/" + anio;
     }
+
+    public boolean equals(Object object) {
+        Fecha otra = (Fecha)object;
+        return (dia==otra.dia) && (mes==otra.mes) && (anio==otra.anio);
+    }
 } 
