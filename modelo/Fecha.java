@@ -34,4 +34,20 @@ public class Fecha
         Fecha otra = (Fecha)object;
         return (dia==otra.dia) && (mes==otra.mes) && (anio==otra.anio);
     }
+
+    public void addDias(int d)
+    {
+        int sum = fechaToDias() + d;
+        diasToFecha(sum);
+    }
+    private int fechaToDias()
+    {
+       
+        return (anio*360) + (mes * 30) + dia; 
+    }
+    private void diasToFecha(int i)
+    {
+        anio = (int)(i/360);
+        mes = 
+    }
 } 
