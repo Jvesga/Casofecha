@@ -1,53 +1,85 @@
 package modelo;
 
-public class Fecha
-{
- private int dia;
- private int mes;
- private int anio;
+public class Fecha{
+    /// ------------------
+    /// Atributos --------
+    /// ------------------
+    protected int dia;
+    protected int mes;
+    protected int year;
+    protected int i;
+    protected String fecha;
+
+    /// ------------------
+    /// Métodos ----------
+    /// ------------------
+
+    /// -----------------------------------
+    /// Métodos de acceso (setter y getter)
+    /// -----------------------------------
+
+    public Fecha(int d, int m, int y){
+        this.dia = d;
+        this.mes = m;
+        this.year = y;
+    }
 
     public void setDia(int dia) {
         this.dia = dia;
     }
+
     public void setMes(int mes) {
         this.mes = mes;
     }
-    public void setAnio(int anio) {
-        this.anio = anio;
+
+    public void setYear(int year) {
+        this.year = year;
     }
+
     public int getDia() {
         return dia;
     }
+
     public int getMes() {
         return mes;
     }
-    public int getAnio() {
-        return anio;
-    }
 
-    //Metodo sobreescrito de la clase object
-    public String toString() {
-        return dia + "/" + mes + "/" + anio;
+    public int getYear() {
+        return year;
     }
-
-    public boolean equals(Object object) {
-        Fecha otra = (Fecha)object;
-        return (dia==otra.dia) && (mes==otra.mes) && (anio==otra.anio);
+    
+    private int fechaToDias()
+    {
+        return year * 360 + mes * 30 + dia;
     }
 
     public void addDias(int d)
     {
-        int sum = fechaToDias() + d;
+        int sum = fechaToDias()+d;
         diasToFecha(sum);
     }
-    private int fechaToDias()
-    {
-       
-        return (anio*360) + (mes * 30) + dia; 
-    }
+
     private void diasToFecha(int i)
     {
-        anio = (int)(i/360);
-        mes = 
+        year =(int)(i/360);
+        mes = (int)(i%360/30);
+        dia = (int)(i%30);
     }
-} 
+
+    /// --------------------------------------
+    /// Método sobreescrito de la clase Object
+    /// --------------------------------------
+    public String toString(){
+        return dia + "/" + mes + "/" + year;
+    }
+
+    /// --------------------------------------
+    /// Método sobreescrito de la clase Object
+    /// --------------------------------------
+    
+    public boolean equals(Object o){
+        Fecha otra = (Fecha)o;
+        return (dia==otra.dia) && (mes==otra.mes) && (year==otra.year);
+    }
+
+}
